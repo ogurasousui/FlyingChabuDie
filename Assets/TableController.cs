@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class TableController : MonoBehaviour {
 	Rigidbody2D rigid2D;
+	AudioSource aud;
+	public AudioClip hitSE;
 
 	// Use this for initialization
 	void Start () {
 		this.rigid2D = GetComponent<Rigidbody2D>();
+		this.aud = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -16,5 +19,9 @@ public class TableController : MonoBehaviour {
 			this.rigid2D.velocity = Vector2.zero;
 			transform.SetPositionAndRotation(new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
 		}
+	}
+
+    void OnCollisionEnter2D(Collision2D col) {
+		this.aud.PlayOneShot(this.hitSE, 0.3f);
 	}
 }
