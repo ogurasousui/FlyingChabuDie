@@ -10,6 +10,7 @@ public class TableController : MonoBehaviour {
 
 	public AudioClip hitSE;
 	public AudioClip clearSE;
+	public AudioClip resetSE;
 
 	Vector3 initialPosition;
 
@@ -24,8 +25,7 @@ public class TableController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     if (Input.GetKey(KeyCode.Space)) {
-			this.rigid2D.velocity = Vector2.zero;
-			transform.SetPositionAndRotation(this.initialPosition, Quaternion.Euler(0, 0, 0));
+			this.ResetPosition();
 		}
 	}
 
@@ -33,8 +33,16 @@ public class TableController : MonoBehaviour {
 		if (col.gameObject.tag == "goal") {
 			this.GameManager.GetComponent<GameManager>().Clear();
       this.aud.PlayOneShot(this.clearSE, 0.3f);
-		} else {
+		} else if (col.gameObject.tag == "reset") {
+			this.ResetPosition();
+      this.aud.PlayOneShot(this.resetSE, 0.3f);
+		} else	{
 			this.aud.PlayOneShot(this.hitSE, 0.3f);
 		}
+	}
+
+	void ResetPosition () {
+		this.rigid2D.velocity = Vector2.zero;
+		transform.SetPositionAndRotation(this.initialPosition, Quaternion.Euler(0, 0, 0));
 	}
 }
