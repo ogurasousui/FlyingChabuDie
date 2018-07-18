@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TableController : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 	Rigidbody2D rigid2D;
 	AudioSource aud;
 

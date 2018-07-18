@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61384436532481558}
   - component: {fileID: 50676357786171208}
   m_Layer: 0
-  m_Name: resetPrefab
+  m_Name: ResetPrefab
   m_TagString: reset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
